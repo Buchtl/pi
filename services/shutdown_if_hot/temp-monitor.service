@@ -1,0 +1,15 @@
+[Unit]
+Description=Shutdown Raspberry Pi if temperature is too high
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/pi/safety/shutdown_if_hot.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
+
