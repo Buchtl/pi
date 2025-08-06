@@ -3,7 +3,7 @@ import time
 import os
 
 # Threshold in Celsius
-MAX_TEMP = 70
+MAX_TEMP="${1:-70}"
 
 def get_temp():
     with open("/sys/class/thermal/thermal_zone0/temp", "r") as f:
