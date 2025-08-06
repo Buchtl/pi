@@ -9,6 +9,8 @@ args = parser.parse_args()
 
 MAX_TEMP = args.max_temp
 
+print(f"Shutting down if temperature exceeds {MAX_TEMP}°C")
+
 def get_temp():
     with open("/sys/class/thermal/thermal_zone0/temp", "r") as f:
         temp_str = f.read().strip()
