@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
 import time
 import os
+import argparse
 
-# Threshold in Celsius
-MAX_TEMP="${1:-70}"
+parser = argparse.ArgumentParser(description="Monitor CPU temperature and shut down if it exceeds a threshold.")
+parser.add_argument("--max-temp", type=int, default=70, help="Maximum allowed temperature in Celsius before shutdown (default: 70)")
+args = parser.parse_args()
+
+MAX_TEMP = args.max_temp
 
 def get_temp():
     with open("/sys/class/thermal/thermal_zone0/temp", "r") as f:
